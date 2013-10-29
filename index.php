@@ -17,7 +17,7 @@
 </head>
 <body>
 <h1>Register here!</h1>
-<p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
+    <p>Fill in your name,  email address and company name then click <strong>Submit</strong> to register.</p>
 <form method="post" action="index.php" enctype="multipart/form-data" >
       Name  <input type="text" name="name" id="name"/></br>
       Email <input type="text" name="email" id="email"/></br>
@@ -72,12 +72,12 @@
         echo "<tr><th>Name</th>";
         echo "<th>Email</th>";
         echo "<th>Date</th>";
-        echo "<th>Comapny Name</th></tr>";
+        echo "<th>Company Name</th></tr>";
         foreach($registrants as $registrant) {
             echo "<tr><td>".$registrant['name']."</td>";
             echo "<td>".$registrant['email']."</td>";
             echo "<td>".$registrant['date']."</td>";
-            echo "<td>".$registrant['comapny_name']."</td></tr>";
+            echo "<td>".$registrant['company_name']."</td></tr>";
         }
         echo "</table>";
     } else {
