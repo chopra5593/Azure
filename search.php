@@ -42,35 +42,27 @@
     }
     // Insert registration info
     if(!empty($_POST)) {
-    try {
+      try {
         $name = $_POST['name'];
         $email = $_POST['email'];
         $date = date("Y-m-d");
         $company_name = $_POST['company_name'];
-        // Insert data
-        $sql_search = "SELECT * FROM registration_tbl WHERE name LIKE '%?%' AND email LIKE '%?%' AND company_name LIKE '%?%'";
+        // Search data
+        $sql_search = "SELECT * FROM registration_tbl WHERE name LIKE ? AND email LIKE ? AND company_name LIKE ?";
         $stmt = $conn->prepare($sql_search);
-        $stmt->bindValue(1, $name);
-        $stmt->bindValue(2, $email);
-        $stmt->bindValue(3, $date);
-        $stmt->bindValue(4, $company_name);
+        $stmt->bindValue(1, $name.'%');
+        $stmt->bindValue(2, $email.'%');
+        $stmt->bindValue(3, $company_name.'%');
         $stmt->execute();
-    }
-    catch(Exception $e) {
+      }
+      catch(Exception $e) {
         die(var_dump($e));
-    }
-    echo "<h3>Your're registered!</h3>";
+      }
     }
     // Retrieve data
-    $sql_select = "SELECT * FROM registration_tbl WHERE name LIKE '%?%' AND email LIKE '%?%' AND company_name LIKE '%?%";
-    $stmt = $conn->prepare($sql_select);
-    $stmt->bindValue(1, $name);
-    $stmt->bindValue(2, $email);
-    $stmt->bindValue(3, $date);
-    $stmt->bindValue(4, $company_name);
     $registrants = $stmt->fetchAll(); 
     if(count($registrants) > 0) {
-        echo "<h2>People who are registered:</h2>";
+        echo "<h2>Results found:</h2>";
         echo "<table>";
         echo "<tr><th>Name</th>";
         echo "<th>Email</th>";
@@ -84,7 +76,7 @@
         }
         echo "</table>";
     } else {
-        echo "<h3>No one is currently registered.</h3>";
+        echo "<h3>No results found.</h3>";
     }
 ?>
 </body>

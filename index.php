@@ -23,7 +23,10 @@
       Email <input type="text" name="email" id="email"/></br>
       Company Name <input type="text" name="company_name" id="company_name"/></br>
       <input type="submit" name="submit" value="Submit" />
+
 </form>
+<a href="search.php">Search page</a>
+
 <?php
     // DB connection info
     //TODO: Update the values for $host, $user, $pwd, and $db
