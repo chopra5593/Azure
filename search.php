@@ -48,7 +48,7 @@
         $date = date("Y-m-d");
         $company_name = $_POST['company_name'];
         // Insert data
-        $sql_search = "SELECT * FROM registration_tbl WHERE name='%?%' AND email='%?%' AND company_name='%?%'";
+        $sql_search = "SELECT * FROM registration_tbl WHERE name LIKE '%?%' AND email LIKE '%?%' AND company_name LIKE '%?%'";
         $stmt = $conn->prepare($sql_search);
         $stmt->bindValue(1, $name);
         $stmt->bindValue(2, $email);
