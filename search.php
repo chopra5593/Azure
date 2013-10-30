@@ -62,8 +62,12 @@
     echo "<h3>Your're registered!</h3>";
     }
     // Retrieve data
-    //$sql_select = "SELECT * FROM registration_tbl";
-    //$stmt = $conn->query($sql_search);
+    $sql_select = "SELECT * FROM registration_tbl WHERE name LIKE '%?%' AND email LIKE '%?%' AND company_name LIKE '%?%";
+    $stmt = $conn->prepare($sql_select);
+    $stmt->bindValue(1, $name);
+    $stmt->bindValue(2, $email);
+    $stmt->bindValue(3, $date);
+    $stmt->bindValue(4, $company_name);
     $registrants = $stmt->fetchAll(); 
     if(count($registrants) > 0) {
         echo "<h2>People who are registered:</h2>";
