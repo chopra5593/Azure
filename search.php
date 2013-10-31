@@ -22,7 +22,7 @@
       Name  <input type="text" name="name" id="name"/></br>
       Email <input type="text" name="email" id="email"/></br>
       Company Name <input type="text" name="company_name" id="company_name"/></br>
-      <input type="submit" name="submit" value="Submit" />
+      <input type="submit" name="submit" value="Search" />
 </form>
 <?php
     // DB connection info
